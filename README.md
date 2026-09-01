@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
@@ -15,7 +16,6 @@
       --text: #f0f0f0;
       --text-muted: #888;
       --green: #22c55e;
-      --green-dim: #16a34a;
       --red: #ef4444;
       --blue: #3b82f6;
       --purple: #a855f7;
@@ -47,14 +47,13 @@
       padding: 16px 16px 20px;
     }
 
-    /* Header + Menu */
+    /* Header */
     .topbar {
       display: flex;
       align-items: center;
       justify-content: space-between;
       padding: 12px 0 18px;
     }
-
     .topbar h1 {
       font-size: 1.35rem;
       font-weight: 700;
@@ -64,7 +63,6 @@
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
-
     .menu-btn {
       width: 40px;
       height: 40px;
@@ -79,7 +77,7 @@
       cursor: pointer;
     }
 
-    /* Side Menu (Drawer) */
+    /* Drawer */
     .overlay {
       position: fixed;
       inset: 0;
@@ -106,47 +104,47 @@
       padding: 24px 16px;
       display: flex;
       flex-direction: column;
+      overflow-y: auto;
     }
     .drawer.open { transform: translateX(0); }
 
     .drawer h3 {
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       text-transform: uppercase;
       letter-spacing: 1px;
       color: var(--text-muted);
-      margin-bottom: 16px;
+      margin-bottom: 12px;
+      margin-top: 8px;
     }
+    .drawer h3:first-child { margin-top: 0; }
 
     .drawer-item {
       display: flex;
       align-items: center;
       gap: 12px;
-      padding: 14px 12px;
+      padding: 13px 12px;
       border-radius: 12px;
       color: var(--text);
       font-weight: 500;
-      font-size: 1rem;
+      font-size: 0.95rem;
       cursor: pointer;
       border: none;
       background: transparent;
       width: 100%;
       text-align: left;
-      margin-bottom: 4px;
+      margin-bottom: 2px;
     }
-    .drawer-item:hover, .drawer-item:active {
+    .drawer-item:active, .drawer-item.active {
       background: var(--surface2);
     }
-    .drawer-item.active {
-      background: var(--surface2);
-      color: var(--green);
-    }
-    .drawer-item .icon { font-size: 1.25rem; width: 28px; text-align: center; }
+    .drawer-item.active { color: var(--green); }
+    .drawer-item .icon { font-size: 1.2rem; width: 26px; text-align: center; }
 
     .drawer-footer {
       margin-top: auto;
-      padding-top: 20px;
+      padding-top: 16px;
       border-top: 1px solid var(--border);
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       color: #555;
       text-align: center;
     }
@@ -158,7 +156,6 @@
       gap: 10px;
       margin-bottom: 14px;
     }
-
     .total-card {
       background: var(--surface);
       border: 1px solid var(--border);
@@ -166,9 +163,7 @@
       padding: 14px 12px;
       text-align: center;
     }
-    .total-card.full {
-      grid-column: 1 / -1;
-    }
+    .total-card.full { grid-column: 1 / -1; }
     .total-card.balance {
       background: linear-gradient(145deg, #0f1a12, #0a0a0a);
       border-color: #1a3a24;
@@ -177,7 +172,6 @@
       background: linear-gradient(145deg, #120f1a, #0a0a0a);
       border-color: #2a1a3a;
     }
-
     .total-card .label {
       font-size: 0.7rem;
       text-transform: uppercase;
@@ -196,7 +190,7 @@
     .value.neutral { color: var(--text); }
     .value.purple { color: var(--purple); }
 
-    /* Category chips (metas) */
+    /* Metas chips */
     .metas {
       display: flex;
       gap: 8px;
@@ -206,7 +200,6 @@
       -webkit-overflow-scrolling: touch;
     }
     .metas::-webkit-scrollbar { display: none; }
-
     .meta-chip {
       flex-shrink: 0;
       background: var(--surface);
@@ -218,10 +211,7 @@
       color: var(--text-muted);
       white-space: nowrap;
     }
-    .meta-chip .val {
-      color: var(--green);
-      margin-left: 4px;
-    }
+    .meta-chip .val { color: var(--green); margin-left: 4px; }
 
     /* Bottom Nav */
     .bottom-nav {
@@ -238,7 +228,6 @@
       max-width: 480px;
       margin: 0 auto;
     }
-
     .nav-item {
       flex: 1;
       display: flex;
@@ -253,7 +242,7 @@
       padding: 6px 4px;
       cursor: pointer;
     }
-    .nav-item .icon { font-size: 1.35rem; }
+    .nav-item .icon { font-size: 1.3rem; }
     .nav-item.active { color: var(--green); }
     .nav-item.gastos.active { color: var(--red); }
     .nav-item.invest.active { color: var(--purple); }
@@ -262,10 +251,14 @@
     .page { display: none; }
     .page.active { display: block; }
 
-    /* Forms */
-    .input-group {
+    .section-title {
+      font-size: 1.05rem;
+      font-weight: 600;
       margin-bottom: 12px;
     }
+
+    /* Forms */
+    .input-group { margin-bottom: 12px; }
     .input-group label {
       display: block;
       font-size: 0.78rem;
@@ -314,12 +307,19 @@
       transition: transform 0.12s;
     }
     .btn:active { transform: scale(0.98); }
-
     .btn-green { background: var(--green); color: #000; }
     .btn-red { background: var(--red); color: #fff; }
     .btn-purple { background: var(--purple); color: #fff; }
+    .btn-blue { background: var(--blue); color: #fff; }
+    .btn-outline {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      padding: 10px;
+      font-size: 0.9rem;
+    }
 
-    /* Quick examples */
+    /* Quick buttons */
     .quick {
       display: flex;
       flex-wrap: wrap;
@@ -341,9 +341,7 @@
     }
 
     /* History */
-    .history {
-      margin-top: 22px;
-    }
+    .history { margin-top: 22px; }
     .history h2 {
       font-size: 0.95rem;
       font-weight: 600;
@@ -403,12 +401,13 @@
       border-radius: 6px;
       margin-right: 4px;
       font-weight: 600;
+      background: rgba(34,197,94,0.15);
+      color: #4ade80;
     }
-    .tag-carro { background: rgba(59,130,246,0.15); color: #60a5fa; }
-    .tag-casa { background: rgba(249,115,22,0.15); color: #fb923c; }
-    .tag-geral { background: rgba(34,197,94,0.15); color: #4ade80; }
-    .tag-outro { background: rgba(168,85,247,0.12); color: #c084fc; }
-    .tag-invest { background: rgba(168,85,247,0.18); color: #c084fc; }
+    .tag-invest {
+      background: rgba(168,85,247,0.18);
+      color: #c084fc;
+    }
 
     .item-right {
       display: flex;
@@ -452,10 +451,73 @@
       width: 100%;
     }
 
-    .section-title {
-      font-size: 1.05rem;
-      font-weight: 600;
-      margin-bottom: 12px;
+    /* ===== Gerenciar Metas ===== */
+    .meta-manage-list {
+      list-style: none;
+      margin-bottom: 16px;
+    }
+    .meta-manage-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 10px 12px;
+      margin-bottom: 8px;
+    }
+    .meta-manage-item input {
+      flex: 1;
+      padding: 8px 10px;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--text);
+      font-size: 0.95rem;
+      outline: none;
+    }
+    .meta-manage-item input:focus { border-color: var(--accent); }
+
+    .meta-actions {
+      display: flex;
+      gap: 6px;
+      flex-shrink: 0;
+    }
+    .btn-icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--surface2);
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .btn-icon:active { background: var(--border); }
+    .btn-icon.danger:active { color: var(--red); border-color: var(--red); }
+
+    .add-meta-row {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .add-meta-row input {
+      flex: 1;
+    }
+    .add-meta-row .btn {
+      width: auto;
+      padding: 12px 16px;
+      white-space: nowrap;
+    }
+
+    .hint {
+      font-size: 0.78rem;
+      color: #666;
+      margin-top: 8px;
+      line-height: 1.4;
     }
   </style>
 </head>
@@ -467,7 +529,7 @@
       <button class="menu-btn" id="menu-btn" aria-label="Menu">☰</button>
     </div>
 
-    <!-- Totals (always visible) -->
+    <!-- Totals -->
     <div class="totals">
       <div class="total-card">
         <div class="label">Total Guardado</div>
@@ -494,21 +556,11 @@
     <div class="page active" id="page-guardar">
       <p class="section-title">Adicionar valor guardado</p>
 
-      <div class="quick">
-        <button class="quick-btn" data-meta="Carro">🚗 Carro</button>
-        <button class="quick-btn" data-meta="Casa">🏠 Casa</button>
-        <button class="quick-btn" data-meta="Geral">💵 Geral</button>
-        <button class="quick-btn" data-meta="Outro">📦 Outro</button>
-      </div>
+      <div class="quick" id="quick-metas"></div>
 
       <div class="input-group">
         <label for="meta-guardar">Para qual meta?</label>
-        <select id="meta-guardar">
-          <option value="Carro">🚗 Carro</option>
-          <option value="Casa">🏠 Casa</option>
-          <option value="Geral" selected>💵 Geral</option>
-          <option value="Outro">📦 Outro</option>
-        </select>
+        <select id="meta-guardar"></select>
       </div>
 
       <div class="input-group">
@@ -588,6 +640,25 @@
       </div>
     </div>
 
+    <!-- ========== PAGE: GERENCIAR METAS ========== -->
+    <div class="page" id="page-metas">
+      <p class="section-title">Gerenciar onde guardar</p>
+      <p class="hint" style="margin-bottom:14px;">
+        Edite os nomes ou adicione novas opções (ex: Viagem, Emergência, Faculdade...).
+      </p>
+
+      <ul class="meta-manage-list" id="meta-manage-list"></ul>
+
+      <div class="add-meta-row">
+        <input type="text" id="nova-meta" placeholder="Nome da nova meta..." maxlength="30">
+        <button class="btn btn-blue" id="btn-add-meta">＋</button>
+      </div>
+
+      <p class="hint">
+        Toque no nome para editar. Use ✕ para excluir (só se não tiver valores vinculados).
+      </p>
+    </div>
+
     <button class="btn-clear" id="btn-clear" style="display:none; margin-top:16px;">Limpar todos os dados</button>
   </div>
 
@@ -610,7 +681,7 @@
   <!-- Side Menu -->
   <div class="overlay" id="overlay"></div>
   <aside class="drawer" id="drawer">
-    <h3>Menu</h3>
+    <h3>Navegação</h3>
     <button class="drawer-item active" data-page="guardar">
       <span class="icon">💰</span> Guardar Dinheiro
     </button>
@@ -620,6 +691,12 @@
     <button class="drawer-item" data-page="invest">
       <span class="icon">📊</span> Investimentos
     </button>
+
+    <h3>Configurações</h3>
+    <button class="drawer-item" data-page="metas">
+      <span class="icon">✏️</span> Editar Metas
+    </button>
+
     <div class="drawer-footer">
       Dados salvos neste dispositivo<br>
       Tema escuro • Safari
@@ -627,8 +704,12 @@
   </aside>
 
   <script>
+    // ===== Default Metas =====
+    const DEFAULT_METAS = ['Carro', 'Casa', 'Geral', 'Outro'];
+
     // ===== State =====
     let lancamentos = JSON.parse(localStorage.getItem('guardarDinheiro_v2')) || [];
+    let metas = JSON.parse(localStorage.getItem('guardarDinheiro_metas')) || [...DEFAULT_METAS];
 
     // ===== Helpers =====
     function formatBRL(v) {
@@ -645,28 +726,142 @@
 
     function save() {
       localStorage.setItem('guardarDinheiro_v2', JSON.stringify(lancamentos));
+      localStorage.setItem('guardarDinheiro_metas', JSON.stringify(metas));
     }
 
-    function tagClass(meta) {
-      const map = {
-        'Carro': 'tag-carro',
-        'Casa': 'tag-casa',
-        'Geral': 'tag-geral',
-        'Outro': 'tag-outro'
-      };
-      return map[meta] || 'tag-outro';
+    // ===== Metas UI =====
+    function atualizarSelectMetas() {
+      const select = document.getElementById('meta-guardar');
+      const valorAtual = select.value;
+      select.innerHTML = '';
+      metas.forEach(m => {
+        const opt = document.createElement('option');
+        opt.value = m;
+        opt.textContent = m;
+        select.appendChild(opt);
+      });
+      // Tenta manter a seleção anterior
+      if (metas.includes(valorAtual)) select.value = valorAtual;
+    }
+
+    function atualizarQuickMetas() {
+      const container = document.getElementById('quick-metas');
+      container.innerHTML = '';
+      metas.forEach(m => {
+        const btn = document.createElement('button');
+        btn.className = 'quick-btn';
+        btn.textContent = m;
+        btn.addEventListener('click', () => {
+          document.getElementById('meta-guardar').value = m;
+        });
+        container.appendChild(btn);
+      });
+    }
+
+    function renderGerenciarMetas() {
+      const list = document.getElementById('meta-manage-list');
+      list.innerHTML = '';
+
+      metas.forEach((nome, index) => {
+        const li = document.createElement('li');
+        li.className = 'meta-manage-item';
+
+        const input = document.createElement('input');
+        input.type = 'text';
+        input.value = nome;
+        input.maxLength = 30;
+        input.dataset.index = index;
+
+        // Salva ao perder o foco ou apertar Enter
+        const salvarNome = () => {
+          const novoNome = input.value.trim();
+          if (!novoNome) {
+            input.value = metas[index]; // reverte
+            return;
+          }
+          if (novoNome === metas[index]) return;
+
+          // Verifica duplicata
+          if (metas.some((m, i) => i !== index && m.toLowerCase() === novoNome.toLowerCase())) {
+            alert('Já existe uma meta com esse nome.');
+            input.value = metas[index];
+            return;
+          }
+
+          const antigo = metas[index];
+          metas[index] = novoNome;
+
+          // Atualiza lançamentos que usavam o nome antigo
+          lancamentos.forEach(l => {
+            if (l.tipo === 'guardar' && l.meta === antigo) {
+              l.meta = novoNome;
+            }
+          });
+
+          save();
+          atualizarSelectMetas();
+          atualizarQuickMetas();
+          render();
+        };
+
+        input.addEventListener('blur', salvarNome);
+        input.addEventListener('keydown', e => {
+          if (e.key === 'Enter') {
+            input.blur();
+          }
+        });
+
+        const actions = document.createElement('div');
+        actions.className = 'meta-actions';
+
+        const btnDel = document.createElement('button');
+        btnDel.className = 'btn-icon danger';
+        btnDel.textContent = '✕';
+        btnDel.title = 'Excluir';
+        btnDel.addEventListener('click', () => {
+          const temValores = lancamentos.some(l => l.tipo === 'guardar' && l.meta === metas[index]);
+          if (temValores) {
+            alert('Não é possível excluir: existem valores guardados nessa meta.\nApague ou mova os valores primeiro.');
+            return;
+          }
+          if (metas.length <= 1) {
+            alert('Você precisa ter pelo menos uma meta.');
+            return;
+          }
+          if (confirm(`Excluir a meta "${metas[index]}"?`)) {
+            metas.splice(index, 1);
+            save();
+            atualizarSelectMetas();
+            atualizarQuickMetas();
+            renderGerenciarMetas();
+            render();
+          }
+        });
+
+        actions.appendChild(btnDel);
+        li.appendChild(input);
+        li.appendChild(actions);
+        list.appendChild(li);
+      });
     }
 
     // ===== Calculate & Render =====
     function calcularTotais() {
       let guardado = 0, gastos = 0, invest = 0;
-      const metas = { Carro: 0, Casa: 0, Geral: 0, Outro: 0 };
+      const totaisMeta = {};
+
+      metas.forEach(m => { totaisMeta[m] = 0; });
 
       lancamentos.forEach(l => {
         if (l.tipo === 'guardar') {
           guardado += l.valor;
-          if (metas[l.meta] !== undefined) metas[l.meta] += l.valor;
-          else metas.Outro += l.valor;
+          if (totaisMeta[l.meta] !== undefined) {
+            totaisMeta[l.meta] += l.valor;
+          } else {
+            // Meta antiga que não existe mais → conta como "Outro" ou cria temporário
+            if (!totaisMeta['_outros']) totaisMeta['_outros'] = 0;
+            totaisMeta['_outros'] += l.valor;
+          }
         } else if (l.tipo === 'gasto') {
           gastos += l.valor;
         } else if (l.tipo === 'investimento') {
@@ -684,15 +879,15 @@
       saldoEl.textContent = formatBRL(saldo);
       saldoEl.className = 'value ' + (saldo > 0 ? 'positive' : saldo < 0 ? 'negative' : 'neutral');
 
-      // Metas chips
+      // Chips
       const chips = document.getElementById('metas-chips');
       chips.innerHTML = '';
-      Object.entries(metas).forEach(([nome, val]) => {
+      Object.entries(totaisMeta).forEach(([nome, val]) => {
         if (val > 0) {
           const chip = document.createElement('div');
           chip.className = 'meta-chip';
-          const icons = { Carro: '🚗', Casa: '🏠', Geral: '💵', Outro: '📦' };
-          chip.innerHTML = `${icons[nome] || ''} ${nome} <span class="val">${formatBRL(val)}</span>`;
+          const label = nome === '_outros' ? 'Outros' : nome;
+          chip.innerHTML = `${label} <span class="val">${formatBRL(val)}</span>`;
           chips.appendChild(chip);
         }
       });
@@ -720,7 +915,7 @@
 
           let tagHtml = '';
           if (tipo === 'guardar') {
-            tagHtml = `<span class="item-tag ${tagClass(l.meta)}">${l.meta}</span>`;
+            tagHtml = `<span class="item-tag">${l.meta || 'Geral'}</span>`;
           } else if (tipo === 'investimento') {
             tagHtml = `<span class="item-tag tag-invest">${l.meta || 'Invest'}</span>`;
           }
@@ -799,10 +994,16 @@
       document.getElementById('page-' + page).classList.add('active');
 
       document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-      document.querySelector(`.nav-item[data-page="${page}"]`).classList.add('active');
+      const navBtn = document.querySelector(`.nav-item[data-page="${page}"]`);
+      if (navBtn) navBtn.classList.add('active');
 
       document.querySelectorAll('.drawer-item').forEach(d => d.classList.remove('active'));
-      document.querySelector(`.drawer-item[data-page="${page}"]`).classList.add('active');
+      const drawerBtn = document.querySelector(`.drawer-item[data-page="${page}"]`);
+      if (drawerBtn) drawerBtn.classList.add('active');
+
+      if (page === 'metas') {
+        renderGerenciarMetas();
+      }
 
       closeMenu();
     }
@@ -827,16 +1028,34 @@
       btn.addEventListener('click', () => goToPage(btn.dataset.page));
     });
 
-    // Quick meta buttons
-    document.querySelectorAll('.quick-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.getElementById('meta-guardar').value = btn.dataset.meta;
-      });
-    });
-
     document.getElementById('btn-add-guardar').addEventListener('click', () => adicionar('guardar'));
     document.getElementById('btn-add-gasto').addEventListener('click', () => adicionar('gasto'));
     document.getElementById('btn-add-invest').addEventListener('click', () => adicionar('investimento'));
+
+    // Adicionar nova meta
+    document.getElementById('btn-add-meta').addEventListener('click', () => {
+      const input = document.getElementById('nova-meta');
+      const nome = input.value.trim();
+      if (!nome) {
+        input.focus();
+        return;
+      }
+      if (metas.some(m => m.toLowerCase() === nome.toLowerCase())) {
+        alert('Já existe uma meta com esse nome.');
+        return;
+      }
+      metas.push(nome);
+      save();
+      input.value = '';
+      atualizarSelectMetas();
+      atualizarQuickMetas();
+      renderGerenciarMetas();
+      render();
+    });
+
+    document.getElementById('nova-meta').addEventListener('keydown', e => {
+      if (e.key === 'Enter') document.getElementById('btn-add-meta').click();
+    });
 
     // Enter key
     ['valor-guardar', 'desc-guardar'].forEach(id => {
@@ -849,9 +1068,9 @@
       document.getElementById(id).addEventListener('keydown', e => { if (e.key === 'Enter') adicionar('investimento'); });
     });
 
-    // Delete
+    // Delete lançamento
     document.addEventListener('click', e => {
-      if (e.target.classList.contains('btn-delete')) {
+      if (e.target.classList.contains('btn-delete') && e.target.dataset.index !== undefined) {
         const index = parseInt(e.target.dataset.index);
         lancamentos.splice(index, 1);
         save();
@@ -868,6 +1087,8 @@
     });
 
     // Init
+    atualizarSelectMetas();
+    atualizarQuickMetas();
     render();
   </script>
 </body>
